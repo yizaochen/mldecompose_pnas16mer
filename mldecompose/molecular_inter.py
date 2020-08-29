@@ -26,6 +26,15 @@ class MolecularInteraction:
             d_result[interaction] = (lambda_contribution/enm_lambda) * 100
         return d_result
         
+    def get_diff_two_modes(self, mode_id_1, mode_id_2):
+        interaction_list = ['base-stacking', 'backbone', 'ribose', 'base-pairing']
+        enm_lambda_difference = self.df.loc[f'Mode {mode_id_1}']['enm_lambda'] - self.df.loc[f'Mode {mode_id_2}']['enm_lambda']
+        d_result = dict()
+        for interaction in interaction_list:
+            differnce = self.__get_contribution_for_interaction(self.df, mode_id_1, interaction) - self.__get_contribution_for_interaction(self.df, mode_id_2, interaction)
+            d_result[interaction] = (differnce/enm_lambda_difference) * 100
+        return d_result
+        
     def __get_contribution_for_interaction(self, df1, mode_id, interaction):
         interaction_map = {'base-stacking': ['st'],
                            'backbone': ['PP', 'PB'], 
