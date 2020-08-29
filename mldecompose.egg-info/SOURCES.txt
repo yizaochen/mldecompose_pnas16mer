@@ -1,0 +1,7 @@
+README.md
+setup.py
+mldecompose.egg-info/PKG-INFO
+mldecompose.egg-info/SOURCES.txt
+mldecompose.egg-info/dependency_links.txt
+mldecompose.egg-info/requires.txt
+mldecompose.egg-info/top_level.txt
